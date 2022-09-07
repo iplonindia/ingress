@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'grafana-go-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'grafana-go-ingress'
+    controllerValue: "k8s.io/grafana-pm-ingress"
+    enabled: true
+  replicaCount: 1
