@@ -1,0 +1,14 @@
+controller:
+  ingressClass: 'opcua-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'opcua-ingress'
+    controllerValue: "k8s.io/opcua-ingress"
+    enabled: true
+  replicaCount: 1
+  service:
+    enableHttp: false
+    enableHttps: false
+tcp:
+    4240: "iplon-opcua/iplon-opcua-svc:4240"
