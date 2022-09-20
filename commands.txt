@@ -5,3 +5,4 @@ For deploying ingress
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm upgrade --install grafana-pm-ingress ingress-nginx/ingress-nginx -f grafana-pm-ingress-controller.yaml
 helm upgrade --install opcua-ingress  ingress-nginx/ingress-nginx -f .\iplonopcua-ingress-controller.yaml
+helm upgrade --install ired-ingress  ingress-nginx/ingress-nginx -f .\ired-iplon.co.in.yaml

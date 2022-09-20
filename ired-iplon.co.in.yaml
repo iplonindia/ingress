@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'ired-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'ired-ingress'
+    controllerValue: "k8s.io/ired-ingress"
+    enabled: true
+  replicaCount: 1
