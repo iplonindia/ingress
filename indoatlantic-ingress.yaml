@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pvindia-ingress
+  name: indoatlantic-ingress
   namespace: coreapps
  
   annotations:
     # kubernetes.io/tls-acme: "true"
     # nginx.ingress.kubernetes.io/app-root: /get_data.php
-    kubernetes.io/ingress.class: "pvindia-ingress"    
-    cert-manager.io/cluster-issuer: "letsencrypt-prod-pvindia"
+    kubernetes.io/ingress.class: "indoatlantic-ingress"    
+    cert-manager.io/cluster-issuer: "letsencrypt-prod-indoatlantic"
     nginx.ingress.kubernetes.io/ssl-redirect: 'false'
     nginx.ingress.kubernetes.io/ingress.allow-http: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: 500m
@@ -17,17 +17,17 @@ metadata:
 spec:
   tls:
   - hosts:
-    - pvindia.iplon.co.in
-    secretName: pvindia-tls-prod
+    - indoatlantic.iplon.co.in
+    secretName: indoatlantic-tls-prod
 
   rules:
-  - host: pvindia.iplon.co.in
+  - host: indoatlantic.iplon.co.in
     http:
       paths:
       - path: /(.*)
         pathType: Prefix
         backend:
           service:
-            name: iplon-apache-pvindia
+            name: iplon-apache-indoatlantic
             port: 
               number: 80

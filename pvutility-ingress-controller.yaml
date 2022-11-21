@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'pvutility-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'pvutility-ingress'
+    controllerValue: "k8s.io/pvutility-ingress"
+    enabled: true
+  replicaCount: 1

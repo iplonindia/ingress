@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'indoatlantic-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'indoatlantic-ingress'
+    controllerValue: "k8s.io/indoatlantic-ingress"
+    enabled: true
+  replicaCount: 1
