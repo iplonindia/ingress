@@ -14,3 +14,4 @@ helm upgrade --install pvindia-ingress  ingress-nginx/ingress-nginx -f .\pvindia
 helm upgrade --install indopacific-ingress  ingress-nginx/ingress-nginx -f .\indopacific-ingress-controller.yaml
 helm upgrade --install pvutility-ingress  ingress-nginx/ingress-nginx -f .\pvutility-ingress-controller.yaml
 helm upgrade --install indoatlantic-ingress  ingress-nginx/ingress-nginx -f .\indoatlantic-ingress-controller.yaml
+helm upgrade --install data-ingress  ingress-nginx/ingress-nginx -f .\data-ingress-controller.yaml
