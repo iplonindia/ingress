@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'pv-india-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'pv-india-ingress'
+    controllerValue: "k8s.io/pv-india-ingress"
+    enabled: true
+  replicaCount: 1

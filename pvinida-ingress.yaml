@@ -3,11 +3,11 @@ kind: Ingress
 metadata:
   name: pvindia-ingress
   namespace: coreapps
- 
+
   annotations:
     # kubernetes.io/tls-acme: "true"
     # nginx.ingress.kubernetes.io/app-root: /get_data.php
-    kubernetes.io/ingress.class: "pvindia-ingress"    
+    kubernetes.io/ingress.class: "pvindia-ingress"
     cert-manager.io/cluster-issuer: "letsencrypt-prod-pvindia"
     nginx.ingress.kubernetes.io/ssl-redirect: 'false'
     nginx.ingress.kubernetes.io/ingress.allow-http: "true"

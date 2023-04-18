@@ -7,7 +7,7 @@ metadata:
   annotations:
     # kubernetes.io/tls-acme: "true"
     # nginx.ingress.kubernetes.io/app-root: /get_data.php
-    kubernetes.io/ingress.class: "pvutility-ingress"    
+    kubernetes.io/ingress.class: "pvutility-ingress"
     cert-manager.io/cluster-issuer: "letsencrypt-prod-pvutility"
     nginx.ingress.kubernetes.io/ssl-redirect: 'false'
     nginx.ingress.kubernetes.io/ingress.allow-http: "true"
@@ -29,5 +29,5 @@ spec:
         backend:
           service:
             name: iplon-apache-pvutility
-            port: 
+            port:
               number: 8080

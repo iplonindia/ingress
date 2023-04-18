@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 # kind: Issuer
 metadata:
-  name: letsencrypt-prod-pvindia
+  name: letsencrypt-prod-pv-india
 
 spec:
   acme:
@@ -17,4 +17,4 @@ spec:
     solvers:
     - http01:
         ingress:
-             class:  pvindia-ingress
+             class:  pv-india-ingress
