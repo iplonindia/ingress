@@ -2,8 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 # kind: Issuer
 metadata:
-  name: letsencrypt-tr-prod-pv-india
-
+  name: letsencrypt-prod-igrafana-dev
 spec:
   acme:
    # The ACME server URL
@@ -17,4 +16,4 @@ spec:
     solvers:
     - http01:
         ingress:
-             class:  tr-pv-india-ingress
+             class:  igrafana-dev-ingress

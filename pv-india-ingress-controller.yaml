@@ -1,5 +1,15 @@
 controller:
   ingressClass: 'pv-india-ingress'
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/client-max-body-size: "10m"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: 128k
+    nginx.ingress.kubernetes.io/client-header-buffer-size: 1000k
+    nginx.ingress.kubernetes.io/http2-max-header-size: 999k
+    nginx.ingress.kubernetes.io/large-client-header-buffers: 9 900k
+    nginx.ingress.kubernetes.io/proxy-body-size: 1500m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 999k
   image:
     allowPrivilegeEscalation: false
   ingressClassResource:

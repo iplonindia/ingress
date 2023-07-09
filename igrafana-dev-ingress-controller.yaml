@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'igrafana-dev-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'igrafana-dev-ingress'
+    controllerValue: "k8s.io/data-ingress"
+    enabled: true
+  replicaCount: 1
