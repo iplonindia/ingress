@@ -18,11 +18,11 @@ helm upgrade --install data-ingress  ingress-nginx/ingress-nginx -f .\data-ingre
 helm upgrade --install igrafana-ingress  ingress-nginx/ingress-nginx -f .\igrafana-ingress-controller.yaml
 
 
-helm upgrade --install igrafana-dev-ingress  ingress-nginx/ingress-nginx -f .\igrafana-dev-ingress-controller.yaml
+helm upgrade --install igrafana-dev-ingress  ingress-nginx/ingress-nginx -f .\igrafana-dev-ingress-controller.yaml --> removed
 
 helm upgrade --install igrafana-test--ingress  ingress-nginx/ingress-nginx -f .\igrafana-test-ingress-controller.yaml
 
-helm upgrade --install pv-india-ingress  ingress-nginx/ingress-nginx --set controller.metrics.enabled=true  -f .\pv-india-ingress-controller.yaml
+helm upgrade --install pv-india-ingress  ingress-nginx/ingress-nginx --set controller.metrics.enabled=true  -f .\pv-india-ingress-controller.yaml --> removed
 
 
 helm upgrade --install pvindia-ingress  ingress-nginx/ingress-nginx --set controller.metrics.enabled=true --set controller.metrics.serviceMonitor.enabled=true   --set controller.metrics.serviceMonitor.additionalLabels.release="pvindiaingress"-f .\pvindia-ingress-controller.yaml --set controller.metrics.enabled=true \
