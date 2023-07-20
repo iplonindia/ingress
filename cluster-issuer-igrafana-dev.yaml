@@ -16,4 +16,4 @@ spec:
     solvers:
     - http01:
         ingress:
-             class:  igrafana-dev-ingress
+             class:  tr-ingress-igrafana-dev
