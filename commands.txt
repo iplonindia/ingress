@@ -30,6 +30,7 @@ helm upgrade --install pvindia-ingress  ingress-nginx/ingress-nginx --set contro
 
 helm upgrade --install tr-pv-india-ingress traefik/traefik  -f tr-pv-india.ingress-controller.yaml
 helm upgrade --install tr-ingress-igrafana-dev traefik/traefik  -f tr-ingress-igrafana-dev-controller.yaml
+helm upgrade --install tr-ingress-igrafana-prod traefik/traefik  -f tr-ingress-igrafana-prod-controller.yaml
 
 
 
