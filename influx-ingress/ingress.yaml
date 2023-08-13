@@ -1,0 +1,181 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: influx-prod-ingress
+  namespace: influx
+  labels:
+     name: influx-prod
+
+  annotations:
+    kubernetes.io/ingress.class: "tr-ingress-influx-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod-influx"
+    kubernetes.io/force-ssl-redirect: 'true'
+    kubernetes.io/ingress.allow-http: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.org/client-max-body-size: "999m"
+spec:
+
+  tls:
+    - hosts:
+      - influx-amplasia.iplon.co.in
+      secretName: influx-amplasia-tls-prod
+    - hosts:
+      - influx-iplasia.iplon.co.in
+      secretName: influx-iplasia-tls-prod
+    - hosts:
+      - influx-africa.iplon.co.in
+      secretName: influx-africa-tls-prod
+    - hosts:
+      - influx-lulasia.iplon.co.in
+      secretName: influx-lulasia-tls-prod
+    - hosts:
+      - influx-america.iplon.co.in
+      secretName: influx-america-tls-prod
+    - hosts:
+      - influx-asia1.iplon.co.in
+      secretName: influx-asia1-tls-prod
+    - hosts:
+      - influx-asia2.iplon.co.in
+      secretName: influx-asia2-tls-prod
+    - hosts:
+      - influx-asia3.iplon.co.in
+      secretName: influx-asia3-tls-prod
+    - hosts:
+      - influx-asia4.iplon.co.in
+      secretName: influx-asia4-tls-prod
+    - hosts:
+      - influx-asia5.iplon.co.in
+      secretName: influx-asia5-tls-prod
+    - hosts:
+      - influx-sulasia.iplon.co.in
+      secretName: influx-sulasia-tls-prod
+    - hosts:
+      - influx-europe.iplon.co.in
+      secretName: influx-europe-tls-prod
+
+  rules:
+  - host: influx-amplasia.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: amplasia
+                port:
+                  number: 80
+  - host: influx-iplasia.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: iplasia
+                port:
+                  number: 80
+
+  - host: influx-lulasia.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: lulasia
+                port:
+                  number: 80
+  - host: influx-africa.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglafrica
+                port:
+                  number: 80
+
+  - host: influx-america.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglamerica
+                port:
+                  number: 80
+
+  - host: influx-asia1.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglasia1
+                port:
+                  number: 80
+
+
+  - host: influx-asia2.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglasia2
+                port:
+                  number: 80
+  - host: influx-asia3.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglasia3
+                port:
+                  number: 80
+  - host: influx-asia4.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglasia4
+                port:
+                  number: 80
+  - host: influx-asia5.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mglasia5
+                port:
+                  number: 80
+  - host: influx-europe.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mgleurope
+                port:
+                  number: 80
+  - host: influx-sulasia.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sulasia
+                port:
+                  number: 80
