@@ -1,0 +1,14 @@
+controller:
+  ingressClass: 'imqtt-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'imqtt-ingress'
+    controllerValue: "k8s.io/imqtt-ingress"
+    enabled: true
+  replicaCount: 1
+  service:
+    enableHttp: false
+    enableHttps: false
+tcp:
+    1883: "irabbitmq/irabbitmq:1883"
