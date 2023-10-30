@@ -11,4 +11,4 @@ controller:
     enableHttp: false
     enableHttps: false
 tcp:
-    1883: "irabbitmq/irabbitmq:1883"
+    1883: "irabbitmq/irabbitmq:1883"    

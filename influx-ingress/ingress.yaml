@@ -5,6 +5,7 @@ metadata:
   namespace: influx
   labels:
      name: influx-prod
+     reponame: iplon-ingress
 
   annotations:
     kubernetes.io/ingress.class: "tr-ingress-influx-prod"
@@ -52,6 +53,9 @@ spec:
     - hosts:
       - influx-europe.iplon.co.in
       secretName: influx-europe-tls-prod
+    - hosts:
+      - influx-dev.iplon.co.in
+      secretName: influx-dev-tls-prod
 
   rules:
   - host: influx-amplasia.iplon.co.in
@@ -177,5 +181,16 @@ spec:
             backend:
               service:
                 name: sulasia
+                port:
+                  number: 80
+
+  - host: influx-dev.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: influxdev
                 port:
                   number: 80
