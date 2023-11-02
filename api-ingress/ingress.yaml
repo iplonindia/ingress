@@ -32,7 +32,7 @@ spec:
               service:
                 name: sunalpha-chitthoor-svc
                 port:
-                  number: 7800
+                  number: 80
   - host: sunalpha.iplon.co.in
     http:
         paths:
@@ -42,4 +42,4 @@ spec:
               service:
                 name: sunalpha-all-svc
                 port:
-                  number: 7800
+                  number: 80
