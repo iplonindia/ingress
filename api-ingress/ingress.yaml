@@ -12,7 +12,8 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod-igrafana"
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
-    traefik.ingress.kubernetes.io/router.middlewares: "iplonapis-sunalpha@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: iplonapis-sunalpha@kubernetescrd , iplonapis-regexapi@kubernetescrd
+
 
 spec:
 
@@ -26,11 +27,32 @@ spec:
   - host: sunalpha.iplon.co.in
     http:
         paths:
+          - path: /plant
+            pathType: Prefix
+            backend:
+              service:
+                name: sunalpha-chitthoor-svc
+                port:
+                  number: 80
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
           - path: /chitthoor
             pathType: Prefix
             backend:
               service:
                 name: sunalpha-chitthoor-svc
+                port:
+                  number: 80
+
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /fleet
+            pathType: Prefix
+            backend:
+              service:
+                name: sunalpha-all-svc
                 port:
                   number: 80
   - host: sunalpha.iplon.co.in

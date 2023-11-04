@@ -4,8 +4,13 @@ metadata:
   name: sunalpha
   namespace: iplonapis
 spec:
+  # redirectRegex:
+  #   regex: ^chitthoor/(.*)
+  #   replacement: "/plant/chitthoor/${1}"
   stripPrefix:
     forceSlash: false
     prefixes:
-      - /sunalpha
-      - /chitthoor
+      - /plant
+      - /fleet
+      - /chitthoor/
+      - /sunalpha/
