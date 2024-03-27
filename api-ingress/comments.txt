@@ -1,0 +1,9 @@
+for updating the middlewar
+kubectl -n iplonapis replace -f api-middlewar.yaml
+
+To update the ingress for nodejs servers
+kubectl -n iplonapis replace -f ingress.yaml
+
+update the host name ( it need to be replaced in case of any new domain)
+update the path
+update the service name

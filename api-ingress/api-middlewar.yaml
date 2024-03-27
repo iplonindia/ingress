@@ -10,7 +10,7 @@ spec:
   stripPrefix:
     forceSlash: false
     prefixes:
-      - /plant
-      - /fleet
+      - /plant/
+      - /fleet/
       - /chitthoor/
       - /sunalpha/

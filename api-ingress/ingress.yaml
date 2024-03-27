@@ -31,13 +31,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: sunalpha-chitthoor-svc
+                name: api-docs-plant-svc
                 port:
                   number: 80
   - host: sunalpha.iplon.co.in
     http:
         paths:
-          - path: /chitthoor
+          - path: /chithoor
             pathType: Prefix
             backend:
               service:
@@ -52,7 +52,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: sunalpha-all-svc
+                name: api-docs-fleet-svc
                 port:
                   number: 80
   - host: sunalpha.iplon.co.in
