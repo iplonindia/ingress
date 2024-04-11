@@ -44,3 +44,11 @@ helm upgrade --install tr-ingress-influx-prod traefik/traefik  -f tr-ingress-inf
     - "--providers.kubernetescrd.ingressclass=tr-ingress-igrafana-dev"
     - "--log.level=DEBUG"
 #########################################################################
+
+
+
+#####
+HAPROXY
+########
+
+helm install public-ingress-dev haproxytech/kubernetes-ingress -f .\haproxy-public-ingress-dev.yaml
