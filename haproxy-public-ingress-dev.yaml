@@ -29,26 +29,17 @@ controller:
 
   ## Deployment or DaemonSet pod mode
   kind: Deployment    # can be 'Deployment' or 'DaemonSet'
-  replicaCount: 1
+  replicaCount: 2
 
-  ## minReadySeconds setting of Deployment or DaemonSet
-  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#min-ready-seconds
+
   minReadySeconds: 0
 
-  ## Running container without root privileges
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
   unprivileged: false
 
-  ## Restricts container syscalls
-  ## ref: https://kubernetes.io/docs/tutorials/security/seccomp/
   enableRuntimeDefaultSeccompProfile: true
 
-  ## Privilege escalation
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
   allowPrivilegeEscalation: false
 
-  ## Init Containers
-  ## ref: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
   initContainers: []
   # - name: sysctl
   #   image: "busybox:musl"
@@ -362,8 +353,8 @@ controller:
     enablePorts:
       http: true
       https: true
-      quic: false
-      stat: false
+      quic: true
+      stat: true
       prometheus: true
 
     ## Target port mappings for http, https and stat
