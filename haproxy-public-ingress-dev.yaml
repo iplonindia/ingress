@@ -166,7 +166,7 @@ controller:
   #    memory: 400Mi
     requests:
       cpu: 250m
-      memory: 400Mi
+      memory: 800Mi
 
   autoscaling:
     enabled: false

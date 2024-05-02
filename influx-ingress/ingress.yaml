@@ -7,13 +7,14 @@ metadata:
      name: influx-prod
      reponame: iplon-ingress
 
+
   annotations:
-    kubernetes.io/ingress.class: "tr-ingress-influx-prod"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod-influx"
+    kubernetes.io/ingress.class: public-ingress-dev
+    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress-dev"
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.org/client-max-body-size: "999m"
+
+
 spec:
 
   tls:
@@ -56,6 +57,9 @@ spec:
     - hosts:
       - influx-dev.iplon.co.in
       secretName: influx-dev-tls-prod
+    - hosts:
+      - influx-gcp.iplon.co.in
+      secretName: influx-gcp-tls-prod
 
   rules:
   - host: influx-amplasia.iplon.co.in
@@ -192,5 +196,16 @@ spec:
             backend:
               service:
                 name: influxdev
+                port:
+                  number: 80
+
+  - host: influx-gcp.iplon.co.in
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: influx-lulasia-gcp
                 port:
                   number: 80
