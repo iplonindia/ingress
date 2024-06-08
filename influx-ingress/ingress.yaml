@@ -9,8 +9,10 @@ metadata:
 
 
   annotations:
-    kubernetes.io/ingress.class: public-ingress-dev
-    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress-dev"
+    # kubernetes.io/ingress.class: "tr-ingress-influx-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod-influx"
+    kubernetes.io/ingress.class: "public-ingress"
+    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress"
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
 
@@ -60,6 +62,8 @@ spec:
     - hosts:
       - influx-gcp.iplon.co.in
       secretName: influx-gcp-tls-prod
+
+
 
   rules:
   - host: influx-amplasia.iplon.co.in
@@ -206,6 +210,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: influx-lulasia-gcp
+                name: iplasia-gcp
                 port:
                   number: 80

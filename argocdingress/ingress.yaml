@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo-prod-ingress
+  namespace: argocd
+  labels:
+     name: argocd-ingress
+    #  reponame: iplon-ingress
+
+
+  annotations:
+    kubernetes.io/ingress.class: "public-ingress-dev"
+    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress-dev"
+    kubernetes.io/force-ssl-redirect: 'true'
+    kubernetes.io/ingress.allow-http: "false"
+
+spec:
+  tls:
+    - hosts:
+      - argocd.iplon.co.in
+      secretName: argocd-iplon-tls-prod
+
+  rules:
+  - host: argocd.iplon.co.in
+    http:
+        paths:
+          - path: "/"
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: iplonargo-argocd-server
+                port:
+                  name: https

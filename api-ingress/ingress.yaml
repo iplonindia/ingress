@@ -8,8 +8,10 @@ metadata:
      reponame: iplon-ingress
 
   annotations:
-    kubernetes.io/ingress.class: "tr-ingress-igrafana-prod"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod-igrafana"
+    # kubernetes.io/ingress.class: "tr-ingress-igrafana-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod-igrafana"
+    kubernetes.io/ingress.class: "public-ingress"
+    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress"
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
     traefik.ingress.kubernetes.io/router.middlewares: iplonapis-sunalpha@kubernetescrd , iplonapis-regexapi@kubernetescrd

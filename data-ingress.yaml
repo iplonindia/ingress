@@ -3,19 +3,23 @@ kind: Ingress
 metadata:
   name: data-ingress
   namespace: coreapps
- 
+
   annotations:
     # kubernetes.io/tls-acme: "true"
     # nginx.ingress.kubernetes.io/app-root: /get_data.php
-    kubernetes.io/ingress.class: "data-ingress"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod-data"
-    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
-    nginx.ingress.kubernetes.io/ingress.allow-http: "true"
-    nginx.ingress.kubernetes.io/proxy-body-size: 500m
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "180"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/client-max-body-size: "50m"
-    
+    # kubernetes.io/ingress.class: "data-ingress"
+    kubernetes.io/ingress.class: "public-ingress"
+    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress"
+    # kubernetes.io/force-ssl-redirect: 'true'
+    # kubernetes.io/ingress.allow-http: "false"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod-data"
+    # nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+    # nginx.ingress.kubernetes.io/ingress.allow-http: "true"
+    # nginx.ingress.kubernetes.io/proxy-body-size: 500m
+    # nginx.ingress.kubernetes.io/proxy-read-timeout: "180"
+    # nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # nginx.ingress.kubernetes.io/client-max-body-size: "50m"
+
 spec:
   tls:
   - hosts:
@@ -26,10 +30,10 @@ spec:
   - host: data.iplon.co.in
     http:
       paths:
-      - path: /(.*)
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: iplon-apache-data
-            port: 
+            port:
               number: 8080
