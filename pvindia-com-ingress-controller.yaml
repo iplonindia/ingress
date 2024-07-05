@@ -9,6 +9,6 @@ controller:
   replicaCount: 1
   service:
     enableHttp: true
-    enableHttps: false
+    enableHttps: true
 tcp:
     "3000": "igrafana/pvindia-com-redirect:80"
