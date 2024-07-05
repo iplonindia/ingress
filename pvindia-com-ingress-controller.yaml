@@ -1,0 +1,14 @@
+controller:
+  ingressClass: 'iplon-pvindia-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'iplon-pvindia-ingress'
+    controllerValue: "k8s.io/iplon-pvindia-ingress"
+    enabled: true
+  replicaCount: 1
+  service:
+    enableHttp: true
+    enableHttps: false
+tcp:
+    "3000": "igrafana/pvindia-com-redirect:80"

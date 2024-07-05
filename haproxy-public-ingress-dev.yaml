@@ -38,7 +38,7 @@ controller:
 
   enableRuntimeDefaultSeccompProfile: true
 
-  allowPrivilegeEscalation: false
+  allowPrivilegeEscalation: true
 
   initContainers: []
   # - name: sysctl
@@ -69,6 +69,7 @@ controller:
     http: 80
     https: 443
     stat: 1024
+    grafana: 3000
 
   ## Controller Container liveness/readiness probe configuration
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
@@ -262,7 +263,9 @@ controller:
 
   ## Additional command line arguments to pass to Controller
   ## ref: https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
-  extraArgs: []
+  extraArgs:
+   - -- configmap=$(POD_NAMESPACE)/haproxy-configmap
+   - --tcp-services-configmap=$(POD_NAMESPACE)/haproxy-tcp-services
   #  - --namespace-whitelist=default
   #  - --namespace-whitelist=namespace1
   #  - --namespace-blacklist=namespace2
@@ -272,6 +275,7 @@ controller:
   #  - --disable-https
   #  - --disable-quic
   #  - --sync-period=10s
+
 
   ## Custom configuration for Controller
   ## ref: https://github.com/haproxytech/kubernetes-ingress/tree/master/documentation
@@ -292,7 +296,7 @@ controller:
   logging:
     ## Controller logging level
     ## This only relevant to Controller logs
-    level: info
+    level: debug
 
     ## HAProxy traffic logs
     ## ref: https://github.com/haproxytech/kubernetes-ingress/tree/master/documentation#logging
@@ -345,6 +349,9 @@ controller:
       https: 443
       stat: 1024
       prometheus: 6060
+      rabbitmq: 1883
+      http2: 8080
+      grafana: 3000
 
     ## The controller service ports for http, https and stat can be disabled by
     ## setting below to false - this could be useful when only deploying haproxy
@@ -355,7 +362,10 @@ controller:
       https: true
       quic: true
       stat: true
+      http2: true
       prometheus: true
+      igrafana: true
+
 
     ## Target port mappings for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
@@ -364,12 +374,21 @@ controller:
       https: https
       quic: quic
       stat: stat
+      http2: http2
       prometheus: prometheus
+      grafana: igrafana
 
     ## Additional tcp ports to expose
     ## This is especially useful for TCP services:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
-    tcpPorts: []
+    tcpPorts:
+     - name: imqtt
+       port: 1883
+       targetPort: 1883
+     - name: grafana
+       port:  3000
+       targetPort: 80
+      #  nodePort: 1883
     #  - name: http-alt
     #    port: 8080
     #    targetPort: http-alt
@@ -432,6 +451,7 @@ controller:
       http: 80
       https: 443
       stat: 1024
+      igrafana: 3000
 
   ## Controller deployment strategy definition
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
@@ -456,7 +476,12 @@ controller:
     #     command: ["/bin/sh", "-c", "kill -USR1 $(pidof haproxy); while killall -0 haproxy; do sleep 1; done"]
 
   ## Set additional environment variables
-  extraEnvs: []
+  extraEnvs:
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.namespace
+
     ## Set TZ env to configure timezone on controller containers
     # - name: TZ
     #   value: "Etc/UTC"

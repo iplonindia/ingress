@@ -1,0 +1,9 @@
+controller:
+  ingressClass: 'apache-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'apache-ingress'
+    controllerValue: "k8s.io/apache-ingress"
+    enabled: true
+  replicaCount: 2
