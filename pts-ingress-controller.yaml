@@ -1,0 +1,12 @@
+controller:
+  ingressClass: 'pts-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'pts-ingress'
+    controllerValue: "k8s.io/pts-ingress"
+    enabled: true
+  replicaCount: 1
+  service:
+    enableHttp: true
+    enableHttps: true

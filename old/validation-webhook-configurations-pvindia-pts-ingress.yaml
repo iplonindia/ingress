@@ -1,0 +1,28 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: pts-ingress-ingress-nginx-admission
+webhooks:
+  - name: validate.nginx.ingress.kubernetes.io
+    clientConfig:
+      service:
+        name: pts-ingress-ingress-nginx-controller-admission
+        namespace: default
+        path: "/networking/v1/ingresses"
+        port: 443
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ3akNDQVVpZ0F3SUJBZ0lSQU5zaFVVN1g2WFp2V2tGUTNFeExYeHd3Q2dZSUtvWkl6ajBFQXdNd0lqRWcKTUI0R0ExVUVBeE1YWTJWeWRDMXRZVzVoWjJWeUxYZGxZbWh2YjJzdFkyRXdIaGNOTWpRd01USTVNRGMxTVRJMApXaGNOTWpVd01USTRNRGMxTVRJMFdqQWlNU0F3SGdZRFZRUURFeGRqWlhKMExXMWhibUZuWlhJdGQyVmlhRzl2CmF5MWpZVEIyTUJBR0J5cUdTTTQ5QWdFR0JTdUJCQUFpQTJJQUJEclhOdHU5STlCVmpBRzVlQkJqRmZNSFhLVkEKcXFZK2c5Y3VFZElJZk5NVllJdEtjeHlteHgxSlZnQWRmV0plTmQ5aWtmRmRZVmk1Z3BBbDYxN01Ga2l2aTJEdAozTHR3QU9Mek90K2tSWW1NcEtPSWpLVlQ2UUM5V3djNVJteUdKS05DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trCk1BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZBZmR0SFY0eFNLemVtVml4OVNpZlZ2TmNhY3MKTUFvR0NDcUdTTTQ5QkFNREEyZ0FNR1VDTUUyUmhYRnJWRUJnRjVrU3JTUExsb2c3SzgyUGo0UlFrK09aajFHOApOWlJjRVpYL0czR1NEb3Z0UU0xaVZPYWtrUUl4QU4zOVRhdWtlK2czd05udjdyVkpBcVRCS05oQmo2cVU1bXpkClBVclA4SXlRK1F0MWZZeHo4RVloYWtNMnFxdkVJQT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    rules:
+      - apiGroups:
+          - "networking.k8s.io"
+        apiVersions:
+          - "v1"
+        operations:
+          - "CREATE"
+          - "UPDATE"
+        resources:
+          - "ingresses"
+        scope: Namespaced
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    timeoutSeconds: 10
+    failurePolicy: Fail
