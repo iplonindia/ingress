@@ -38,6 +38,7 @@ helm upgrade --install tr-ingress-igrafana-dev traefik/traefik  -f tr-ingress-ig
 helm upgrade --install tr-ingress-igrafana-prod traefik/traefik  -f tr-ingress-igrafana-prod-controller.yaml
 helm upgrade --install tr-ingress-influx-prod traefik/traefik  -f tr-ingress-influx-prod-controller.yaml
 
+helm upgrade --install tr-api-ingress-prod traefik/traefik  -f tra-api-ingress-prod-controller.yaml
 
 
 

@@ -8,13 +8,13 @@ metadata:
      reponame: iplon-ingress
 
   annotations:
-    # kubernetes.io/ingress.class: "tr-ingress-igrafana-prod"
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod-igrafana"
+    # kubernetes.io/ingress.class: "tr-api-ingress-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod-api-ingress"
     kubernetes.io/ingress.class: "public-ingress"
     cert-manager.io/cluster-issuer: "letsencrypt-public-ingress"
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
-    traefik.ingress.kubernetes.io/router.middlewares: iplonapis-sunalpha@kubernetescrd , iplonapis-regexapi@kubernetescrd
+    # traefik.ingress.kubernetes.io/router.middlewares: iplonapis-sunalpha@kubernetescrd , iplonapis-regexapi@kubernetescrd
 
 
 spec:
@@ -29,28 +29,48 @@ spec:
   - host: sunalpha.iplon.co.in
     http:
         paths:
-          - path: /plant
-            pathType: Prefix
-            backend:
-              service:
-                name: api-docs-plant-svc
-                port:
-                  number: 80
-  - host: sunalpha.iplon.co.in
-    http:
-        paths:
-          - path: /chithoor
+          - path: /api-docs/chithoor-UI
             pathType: Prefix
             backend:
               service:
                 name: sunalpha-chitthoor-svc
                 port:
                   number: 80
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /chithoor/
+            pathType: Prefix
+            backend:
+              service:
+                name: sunalpha-chitthoor-svc
+                port:
+                  number: 80
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /api-docs/sunalpha-UI
+            pathType: Prefix
+            backend:
+              service:
+                name: sunalpha-all-svc
+                port:
+                  number: 80
 
   - host: sunalpha.iplon.co.in
     http:
         paths:
-          - path: /fleet
+          - path: /sunalpha/
+            pathType: Prefix
+            backend:
+              service:
+                name: sunalpha-all-svc
+                port:
+                  number: 80
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /fleet/
             pathType: Prefix
             backend:
               service:
@@ -60,10 +80,42 @@ spec:
   - host: sunalpha.iplon.co.in
     http:
         paths:
-          - path: /sunalpha
+          - path: /api-docs/fleet/
             pathType: Prefix
             backend:
               service:
-                name: sunalpha-all-svc
+                name: api-docs-fleet-svc
+                port:
+                  number: 80
+
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /plant/
+            pathType: Prefix
+            backend:
+              service:
+                name: api-docs-plant-svc
+                port:
+                  number: 80
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /api-docs/plant/
+            pathType: Prefix
+            backend:
+              service:
+                name: api-docs-plant-svc
+                port:
+                  number: 80
+
+  - host: sunalpha.iplon.co.in
+    http:
+        paths:
+          - path: /Access_Token/
+            pathType: Prefix
+            backend:
+              service:
+                name: api-docs-plant-svc
                 port:
                   number: 80
