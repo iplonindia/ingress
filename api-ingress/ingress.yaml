@@ -21,12 +21,12 @@ spec:
 
   tls:
     - hosts:
-      - sunalpha.iplon.co.in
+      - api-int.iplon.co.in
       secretName: sunalpha-tls-prod
 
 
   rules:
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /api-docs/chithoor-UI
@@ -36,7 +36,7 @@ spec:
                 name: sunalpha-chitthoor-svc
                 port:
                   number: 80
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /chithoor/
@@ -46,7 +46,7 @@ spec:
                 name: sunalpha-chitthoor-svc
                 port:
                   number: 80
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /api-docs/sunalpha-UI
@@ -57,7 +57,7 @@ spec:
                 port:
                   number: 80
 
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /sunalpha/
@@ -67,7 +67,7 @@ spec:
                 name: sunalpha-all-svc
                 port:
                   number: 80
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /fleet/
@@ -77,7 +77,7 @@ spec:
                 name: api-docs-fleet-svc
                 port:
                   number: 80
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /api-docs/fleet/
@@ -88,7 +88,7 @@ spec:
                 port:
                   number: 80
 
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /plant/
@@ -98,7 +98,7 @@ spec:
                 name: api-docs-plant-svc
                 port:
                   number: 80
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /api-docs/plant/
@@ -109,7 +109,7 @@ spec:
                 port:
                   number: 80
 
-  - host: sunalpha.iplon.co.in
+  - host: api-int.iplon.co.in
     http:
         paths:
           - path: /Access_Token/
