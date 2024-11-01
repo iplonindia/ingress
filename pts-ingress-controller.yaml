@@ -10,3 +10,6 @@ controller:
   service:
     enableHttp: true
     enableHttps: true
+
+  nodeSelector:
+    node-role.kubernetes.io/mem: "true"

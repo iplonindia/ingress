@@ -226,7 +226,8 @@ controller:
 
   ## Pod Node assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/mem: "true"
 
   ## Node Taints and Tolerations for pod-node cheduling through attraction/repelling
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

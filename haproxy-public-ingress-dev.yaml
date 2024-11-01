@@ -69,7 +69,7 @@ controller:
     http: 80
     https: 443
     stat: 1024
-    grafana: 3000
+    # grafana: 3000
 
   ## Controller Container liveness/readiness probe configuration
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
@@ -227,7 +227,8 @@ controller:
 
   ## Pod Node assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-  nodeSelector: {}
+  nodeSelector:
+    node-role.kubernetes.io/mem: "true"
 
   ## Node Taints and Tolerations for pod-node cheduling through attraction/repelling
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -349,9 +350,9 @@ controller:
       https: 443
       stat: 1024
       prometheus: 6060
-      rabbitmq: 1883
-      http2: 8080
-      grafana: 3000
+      # rabbitmq: 1883
+      # http2: 8080
+      # grafana: 3000
 
     ## The controller service ports for http, https and stat can be disabled by
     ## setting below to false - this could be useful when only deploying haproxy
@@ -360,11 +361,11 @@ controller:
     enablePorts:
       http: true
       https: true
-      quic: true
+      quic: false
       stat: true
-      http2: true
+      # http2: true
       prometheus: true
-      igrafana: true
+      # igrafana: true
 
 
     ## Target port mappings for http, https and stat
@@ -374,20 +375,20 @@ controller:
       https: https
       quic: quic
       stat: stat
-      http2: http2
+      # http2: http2
       prometheus: prometheus
-      grafana: igrafana
+      # grafana: igrafana
 
     ## Additional tcp ports to expose
     ## This is especially useful for TCP services:
     ## https://github.com/haproxytech/kubernetes-ingress/blob/master/documentation/controller.md
-    tcpPorts:
-     - name: imqtt
-       port: 1883
-       targetPort: 1883
-     - name: grafana
-       port:  3000
-       targetPort: 80
+    tcpPorts: []
+    #  - name: imqtt
+    #    port: 1883
+    #    targetPort: 1883
+    #  - name: grafana
+    #    port:  3000
+    #    targetPort: 80
       #  nodePort: 1883
     #  - name: http-alt
     #    port: 8080
@@ -404,7 +405,7 @@ controller:
 
     ## LoadBalancer IP
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
-    loadBalancerIP: ""
+    loadBalancerIP: "34.93.159.42"
 
     ## Source IP ranges permitted to access Network Load Balancer
     ## ref: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/

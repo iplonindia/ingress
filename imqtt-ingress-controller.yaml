@@ -7,8 +7,11 @@ controller:
     controllerValue: "k8s.io/imqtt-ingress"
     enabled: true
   replicaCount: 1
+  nodeSelector:
+    node-role.kubernetes.io/mem: "true"
   service:
     enableHttp: false
     enableHttps: false
+  
 tcp:
     1883: "irabbitmq/irabbitmq:1883"

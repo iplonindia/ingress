@@ -7,3 +7,5 @@ controller:
     controllerValue: "k8s.io/pvindia-ingress"
     enabled: true
   replicaCount: 1
+  nodeSelector:
+    node-role.kubernetes.io/mem: "true"
