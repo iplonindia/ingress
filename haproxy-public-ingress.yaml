@@ -386,7 +386,7 @@ controller:
 
     ## LoadBalancer IP
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
-    loadBalancerIP: ""
+    loadBalancerIP: "34.47.163.36"
 
     ## Source IP ranges permitted to access Network Load Balancer
     ## ref: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/

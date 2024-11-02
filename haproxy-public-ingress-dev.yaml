@@ -351,7 +351,7 @@ controller:
       stat: 1024
       prometheus: 6060
       # rabbitmq: 1883
-      # http2: 8080
+      http2: 8080
       # grafana: 3000
 
     ## The controller service ports for http, https and stat can be disabled by
@@ -363,7 +363,7 @@ controller:
       https: true
       quic: false
       stat: true
-      # http2: true
+      http2: true
       prometheus: true
       # igrafana: true
 
@@ -375,7 +375,7 @@ controller:
       https: https
       quic: quic
       stat: stat
-      # http2: http2
+      http2: http2
       prometheus: prometheus
       # grafana: igrafana
 
@@ -389,7 +389,7 @@ controller:
     #  - name: grafana
     #    port:  3000
     #    targetPort: 80
-      #  nodePort: 1883
+    #    nodePort: 1883
     #  - name: http-alt
     #    port: 8080
     #    targetPort: http-alt

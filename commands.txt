@@ -58,6 +58,7 @@ HAPROXY
 
 helm install public-ingress-dev haproxytech/kubernetes-ingress -f .\haproxy-public-ingress-dev.yaml
 
+helm upgrade public-ingress-dev haproxytech/kubernetes-ingress -f .\haproxy-public-ingress-dev.yaml
 helm install public-ingress-dev-test haproxytech/kubernetes-ingress -f .\haproxy-public-ingress-dev-test.yaml
 
 helm install public-ingress haproxytech/kubernetes-ingress -f .\haproxy-public-ingress.yaml
