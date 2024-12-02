@@ -12,4 +12,4 @@ controller:
     enableHttps: true
 
   nodeSelector:
-    node-role.kubernetes.io/mem: "true"
+    node-role.kubernetes.io/infra: "true"

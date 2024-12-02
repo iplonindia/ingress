@@ -11,6 +11,6 @@ controller:
     enableHttp: true
     enableHttps: true
   nodeSelector:
-    node-role.kubernetes.io/mem: "true"
+    node-role.kubernetes.io/infra: "true"
 tcp:
     "3000": "igrafana/pvindia-com-redirect:80"
