@@ -1,10 +1,10 @@
 For deploying the cloud deploy in gcp
 # gcloud deploy apply --file=clouddeploy.yaml --region=us-west2 --project=iplon-india
 
-
-helm install cert-manager jetstack/cert-manager   --namespace cert-manager  --create-namespace
-
+### Cert-manager
+helm install cert-manager jetstack/cert-manager   --namespace cert-manager  --create-namespace -f certmanager.yaml
 helm upgrade cert-manager jetstack/cert-manager   --namespace cert-manager  --create-namespace -f certmanager.yaml
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true -f certmanager.yaml
 
 For deploying ingress
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -64,3 +64,8 @@ helm upgrade public-ingress-dev haproxytech/kubernetes-ingress -f .\haproxy-publ
 helm install public-ingress-dev-test haproxytech/kubernetes-ingress -f .\haproxy-public-ingress-dev-test.yaml
 
 helm install public-ingress haproxytech/kubernetes-ingress -f .\haproxy-public-ingress.yaml
+
+
+### Dev
+helm -n ingress upgrade public-ingress-dev haproxytech/kubernetes-ingress -f .\dev\haproxy-public-ingress-dev.yaml
+helm -n ingress upgrade --install nginx-dev-ingress  ingress-nginx/ingress-nginx -f .\dev\nginx-dev-ingress-controller.yaml

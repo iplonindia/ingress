@@ -1,2 +1,10 @@
 nodeSelector:
   node-role.kubernetes.io/infra: "true"
+
+webhook:
+  nodeSelector:
+    node-role.kubernetes.io/infra: "true"
+
+cainjector:
+  nodeSelector:
+    node-role.kubernetes.io/infra: "true"

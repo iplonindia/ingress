@@ -1,0 +1,17 @@
+controller:
+  ingressClass: 'nginx-dev-ingress'
+  image:
+    allowPrivilegeEscalation: false
+  ingressClassResource:
+    name: 'nginx-dev-ingress'
+    controllerValue: "k8s.io/nginx-dev-ingress"
+    enabled: true
+  replicaCount: 1
+  nodeSelector:
+    node-role.kubernetes.io/infra: "true"
+  service:
+    loadBalancerIP: "34.93.30.49"  # Replace with the reserved IP
+    annotations:
+      networking.gke.io/load-balancer-type: "External"  # Optional for external LB
+  extraArgs:
+    v: "4"
