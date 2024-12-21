@@ -69,3 +69,4 @@ helm install public-ingress haproxytech/kubernetes-ingress -f .\haproxy-public-i
 ### Dev
 helm -n ingress upgrade public-ingress-dev haproxytech/kubernetes-ingress -f .\dev\haproxy-public-ingress-dev.yaml
 helm -n ingress upgrade --install nginx-dev-ingress  ingress-nginx/ingress-nginx -f .\dev\nginx-dev-ingress-controller.yaml
+helm -n ingress upgrade --install hono-non-http-ingress  ingress-nginx/ingress-nginx -f .\dev\hono-non-http-ingress.yaml
