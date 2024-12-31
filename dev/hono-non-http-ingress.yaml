@@ -23,3 +23,4 @@ tcp:
     8883: "hono/hono-adapter-mqtt:8883"
     28443: "hono/hono-service-device-registry-ext:28443"
     9092:  "hono/ikafka:9092"
+    1883: "irabbitmq/irabbitmq:1883"
