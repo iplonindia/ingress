@@ -9,3 +9,12 @@ controller:
   replicaCount: 1
   nodeSelector:
     node-role.kubernetes.io/infra: "true"
+  config:
+    name: "pvutility-ingress-ingress-nginx-controller"  # Ensure this matches your ConfigMap name
+    data:
+      enable-underscores-in-headers: "true"
+      http-snippet: |
+        # Block access to /functions/*.php
+        location ~ ^/functions/.*\.php$ {
+          return 403;
+        }
