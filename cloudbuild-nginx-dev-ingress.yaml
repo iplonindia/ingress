@@ -1,0 +1,20 @@
+steps:
+  # Step 1: Deploy using Cloud Deploy and specify Skaffold file
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'deploy'
+      - 'releases'
+      - 'create'
+      - '${_RELEASE_NAME}-${SHORT_SHA}'
+      - '--delivery-pipeline=dev-ingress'
+      - '--region=asia-south1'
+      - '--skaffold-file=skaffold-nginx-dev-ingress.yaml'
+
+substitutions:
+  _RELEASE_NAME: nginx-dev-ingress
+
+logsBucket: 'gs://iplon-storage-logs-data/codebuildlogs'
+
+options:
+  logging: GCS_ONLY

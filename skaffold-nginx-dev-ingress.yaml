@@ -1,0 +1,13 @@
+apiVersion: skaffold/v1
+kind: Config
+deploy:
+  helm:
+    releases:
+    - name: nginx-dev-ingress
+      chartPath: ./ingress-nginx
+      namespace: ingresstest
+      #wait: true
+      valuesFiles:
+      - ./values-nginx-dev-ingress.yaml
+      #recreatePods will pass --recreate-pods to helm upgrade
+      recreatePods: true

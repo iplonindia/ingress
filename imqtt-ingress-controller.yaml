@@ -12,6 +12,10 @@ controller:
   service:
     enableHttp: false
     enableHttps: false
-  
+    loadBalancerIP: "35.200.172.163"  # Replace with the reserved IP
+    annotations:
+      networking.gke.io/load-balancer-type: "External"  # Optional for external LB
+  extraArgs:
+    v: "4"
 tcp:
     1883: "irabbitmq/irabbitmq:1883"

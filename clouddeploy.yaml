@@ -1,27 +1,27 @@
-apiVersion: deploy.cloud.google.com/v1beta1
-kind: DeliveryPipeline
-metadata:
-  name: iplon-deployment
-description: Delivery Pipeline for deploying iplon applications in GKE Clusters
-serialPipeline:
-  stages:
-    # - targetId: dev
-    - targetId: prod
+# apiVersion: deploy.cloud.google.com/v1beta1
+# kind: DeliveryPipeline
+# metadata:
+#   name: iplon-deployment
+# description: Delivery Pipeline for deploying iplon applications in GKE Clusters
+# serialPipeline:
+#   stages:
+#     # - targetId: dev
+#     - targetId: prod
 
----
+# ---
+# # apiVersion: deploy.cloud.google.com/v1beta1
+# # kind: Target
+# # metadata:
+# #   name: dev
+# # description: A Dev Cluster
+# # gke:
+# #   cluster: projects/a-project/locations/us-west1-a/clusters/cluster-dev
+# # ---
 # apiVersion: deploy.cloud.google.com/v1beta1
 # kind: Target
 # metadata:
-#   name: dev
-# description: A Dev Cluster
+#   name: prod
+# description: Iplon Prod Cluster
+# requireApproval: true
 # gke:
-#   cluster: projects/a-project/locations/us-west1-a/clusters/cluster-dev
-# ---
-apiVersion: deploy.cloud.google.com/v1beta1
-kind: Target
-metadata:
-  name: prod
-description: Iplon Prod Cluster
-requireApproval: true
-gke:
-  cluster: projects/iplon-india/locations/asia-south1-a/clusters/iplon-india
+#   cluster: projects/iplon-india/locations/asia-south1-a/clusters/iplon-india
