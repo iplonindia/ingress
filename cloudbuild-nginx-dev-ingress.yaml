@@ -9,7 +9,6 @@ steps:
       - '${_RELEASE_NAME}-${SHORT_SHA}'
       - '--delivery-pipeline=dev-ingress-controller'
       - '--region=us-west2'
-      - '--skaffold-file=skaffold-nginx-dev-ingress.yaml'
 
 substitutions:
   _RELEASE_NAME: nginx-dev-ingress
