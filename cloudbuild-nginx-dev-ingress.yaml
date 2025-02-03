@@ -29,6 +29,13 @@ steps:
       - |
         skaffold build -f skaffold-nginx-dev-ingress.yaml > /workspace/skaffold_build.log 2>&1
 
+  - name: 'gcr.io/k8s-skaffold/skaffold'
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        skaffold build -f skaffold-nginx-dev-ingress.yaml --tag=gcr.io/iplon-india/nginx-dev-ingress:${SHORT_SHA}
+
   # Step 2: Deploy with Cloud Deploy
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: sh
