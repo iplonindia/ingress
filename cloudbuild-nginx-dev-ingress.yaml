@@ -1,15 +1,22 @@
 steps:
   # Step 1: Deploy using Cloud Deploy and specify Skaffold file
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - 'deploy'
-      - 'releases'
-      - 'create'
-      - '${_RELEASE_NAME}-${SHORT_SHA}'
-      - '--delivery-pipeline=dev-ingress-controller'
-      - '--region=us-west2'
+  # - name: 'us-docker.pkg.dev/cloudrun/container/hello@sha256:6063adf8f687702b4065151acddba6781c47bc602167eb9f3bec8aebc9ce95cc'
+  #   entrypoint: gcloud
+  #   args:
+  #     - 'deploy'
+  #     - 'releases'
+  #     - 'create'
+  #     - '${_RELEASE_NAME}-${SHORT_SHA}'
+  #     - '--delivery-pipeline=dev-ingress-controller'
+  #     - '--region=us-west2'
+  #     - '--skaffold-file=skaffold-nginx-dev-ingress.yaml'
 
+  - name: 'gcr.io/k8s-skaffold/skaffold'
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        skaffold deploy -f skaffold-nginx-dev-ingress.yaml 
 substitutions:
   _RELEASE_NAME: nginx-dev-ingress
 
