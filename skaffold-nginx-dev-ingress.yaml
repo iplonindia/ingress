@@ -8,6 +8,6 @@ deploy:
       namespace: ingresstest
       #wait: true
       valuesFiles:
-      - ./values-nginx-dev-ingress.yaml
+      - ./ingress-nginx/values-nginx-dev-ingress.yaml
       #recreatePods will pass --recreate-pods to helm upgrade
       recreatePods: true
