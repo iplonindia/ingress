@@ -9,13 +9,13 @@ steps:
         gcloud container clusters get-credentials $_CLUSTER_NAME --region $_REGION
 
 
-  - id: Deployment of nginx-ingress-dev
-    name: gcr.io/k8s-skaffold/skaffold
-    entrypoint: skaffold
-    args:
-      - "deploy"
-      - "--filename=skaffold-nginx-dev-ingress.yaml"
-      - "--force"
+  # - id: Deployment of nginx-ingress-dev
+  #   name: gcr.io/k8s-skaffold/skaffold
+  #   entrypoint: skaffold
+  #   args:
+  #     - "deploy"
+  #     - "--filename=skaffold-nginx-dev-ingress.yaml"
+  #     - "--force"
 
   - id: Deployment of data-ingress-dev
     name: gcr.io/k8s-skaffold/skaffold
@@ -25,16 +25,13 @@ steps:
       - "--filename=skaffold-data-ingress.yaml"
       - "--force"
 
-    # entrypoint: gcloud
-    # args:
-    #   - 'deploy'
-    #   - 'releases'
-    #   - 'create'
-    #   - '${_RELEASE_NAME}-${SHORT_SHA}'
-    #   - '--delivery-pipeline=dev-ingress-controller'
-    #   - '--region=us-west2'
-    #   - '--skaffold-file=skaffold-nginx-dev-ingress.yaml'
-
+  - id: Deployment of public-ingress-dev
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-public-dev-ingress.yaml"
+      - "--force"
 
 substitutions:
   _RELEASE_NAME: nginx-dev-ingress
