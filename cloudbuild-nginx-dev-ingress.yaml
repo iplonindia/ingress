@@ -17,7 +17,7 @@ steps:
       - "--filename=skaffold-nginx-dev-ingress.yaml"
       - "--force"
 
-  - id: Deployment of nginx-ingress-dev
+  - id: Deployment of data-ingress-dev
     name: gcr.io/k8s-skaffold/skaffold
     entrypoint: skaffold
     args:
