@@ -1,72 +1,29 @@
 steps:
   # Step 1: Deploy using Cloud Deploy and specify Skaffold file
-  # - name: 'us-docker.pkg.dev/cloudrun/container/hello@sha256:6063adf8f687702b4065151acddba6781c47bc602167eb9f3bec8aebc9ce95cc'
-  #   entrypoint: gcloud
-  #   args:
-  #     - 'deploy'
-  #     - 'releases'
-  #     - 'create'
-  #     - '${_RELEASE_NAME}-${SHORT_SHA}'
-  #     - '--delivery-pipeline=dev-ingress-controller'
-  #     - '--region=us-west2'
-  #     - '--skaffold-file=skaffold-nginx-dev-ingress.yaml'
-
-  - name: 'gcr.io/k8s-skaffold/skaffold'
-    entrypoint: sh
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
     args:
       - "-c"
       - |
-        skaffold deploy -f skaffold-nginx-dev-ingress.yaml 
+        gcloud container clusters get-credentials $_CLUSTER_NAME --region $_REGION
+
+    # entrypoint: gcloud
+    # args:
+    #   - 'deploy'
+    #   - 'releases'
+    #   - 'create'
+    #   - '${_RELEASE_NAME}-${SHORT_SHA}'
+    #   - '--delivery-pipeline=dev-ingress-controller'
+    #   - '--region=us-west2'
+    #   - '--skaffold-file=skaffold-nginx-dev-ingress.yaml'
+
+
 substitutions:
   _RELEASE_NAME: nginx-dev-ingress
+  _CLUSTER_NAME: "iplon-dev"
+  _REGION: "ap-south-1"
 
 logsBucket: 'gs://iplon-storage-logs-data/codebuildlogs'
 
 options:
   logging: GCS_ONLY
-
-
-# steps:
-#   # Step 1: Build & Tag the Image
-#   - name: 'gcr.io/k8s-skaffold/skaffold'
-#     entrypoint: sh
-#     args:
-#       - "-c"
-#       - |
-#         skaffold build -f skaffold-nginx-dev-ingress.yaml > /workspace/skaffold_build.log 2>&1
-
-#   - name: 'gcr.io/k8s-skaffold/skaffold'
-#     entrypoint: sh
-#     args:
-#       - "-c"
-#       - |
-#         skaffold build -f skaffold-nginx-dev-ingress.yaml --tag=gcr.io/iplon-india/nginx-dev-ingress:${SHORT_SHA}
-
-#   # Step 2: Deploy with Cloud Deploy
-#   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#     entrypoint: sh
-#     args:
-#       - "-c"
-#       - |
-#         gcloud deploy releases create ${_RELEASE_NAME}-${SHORT_SHA} \
-#           --delivery-pipeline=dev-ingress \
-#           --region=asia-south1 \
-#           --skaffold-file=skaffold-nginx-dev-ingress.yaml \
-#           > /workspace/deploy.log 2>&1
-
-#   # Step 3: Upload Logs to GCS
-#   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#     entrypoint: sh
-#     args:
-#       - "-c"
-#       - |
-#         gsutil cp /workspace/skaffold_build.log gs://iplon-storage-logs-data/skaffold-logs/
-#         gsutil cp /workspace/deploy.log gs://iplon-storage-logs-data/skaffold-logs/
-
-# substitutions:
-#   _RELEASE_NAME: nginx-dev-ingress
-
-# logsBucket: 'gs://iplon-storage-logs-data/codebuildlogs'
-
-# options:
-#   logging: GCS_ONLY

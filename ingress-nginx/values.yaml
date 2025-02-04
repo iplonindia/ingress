@@ -112,7 +112,7 @@ controller:
   # We do not support namespaced IngressClasses, yet, so a ClusterRole and a ClusterRoleBinding is required.
   ingressClassResource:
     # -- Name of the IngressClass
-    name: nginx
+    name: nginx-test
     # -- Create the IngressClass or not
     enabled: true
     # -- If true, Ingresses without `ingressClassName` get assigned to this IngressClass on creation.
@@ -142,7 +142,7 @@ controller:
     #   name: external-lb
   # -- For backwards compatibility with ingress.class annotation, use ingressClass.
   # Algorithm is as follows, first ingressClassName is considered, if not present, controller looks for ingress.class annotation
-  ingressClass: nginx
+  ingressClass: nginx-test
   # -- Labels to add to the pod container metadata
   podLabels: {}
   #  key: value
@@ -320,8 +320,7 @@ controller:
   ## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
   ##
   nodeSelector:
-    kubernetes.io/os: linux
-    node-role.kubernetes.io/infra: true
+    node-role.kubernetes.io/infra: "true"
   ## Liveness and readiness probe values
   ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
   ##
