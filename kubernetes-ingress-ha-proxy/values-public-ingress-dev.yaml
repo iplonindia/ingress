@@ -165,14 +165,14 @@ controller:
   # ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
   # Note: Uses ingressClass as name for the Ingress Class object if enabled
   ingressClassResource:
-    name: haproxy
+    name: public-ingress-dev-test
     default: false
     parameters: {}
 
   # k8s < 1.18: Ingress Class used, in multi-ingress environments, for ingress.class annotation to select ingress resources to implement.
   # k8s >= 1.18: Ingress Class used to target specific HAProxy Ingress Controller in multi-ingress envionments
   # ref: https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#using-multiple-ingress-controllers
-  ingressClass: haproxy   # typically "haproxy" or null to receive all events
+  ingressClass: public-ingress-dev-test   # typically "haproxy" or null to receive all events
 
   # Gateway API controller, not available in K8s as default but can be installed
   # ref: https://gateway-api.sigs.k8s.io/
@@ -380,7 +380,7 @@ controller:
   service:
     enabled: true     # set to false when controller.kind is 'DaemonSet' and controller.daemonset.useHostPorts is true
 
-    type: NodePort    # can be 'ClusterIP', 'NodePort' or 'LoadBalancer'
+    type: LoadBalancer    # can be 'ClusterIP', 'NodePort' or 'LoadBalancer'
 
     ## Service annotations
     ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
@@ -450,7 +450,7 @@ controller:
 
     ## LoadBalancer IP
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
-    loadBalancerIP: ""
+    loadBalancerIP: "34.100.227.50"
 
     ## Source IP ranges permitted to access Network Load Balancer
     ## ref: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/
