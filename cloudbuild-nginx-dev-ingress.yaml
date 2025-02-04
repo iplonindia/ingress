@@ -8,6 +8,7 @@ steps:
         gcloud container clusters get-credentials $_CLUSTER_NAME --region $_REGION
 
   - name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
     args:
       - "deploy"
       - "--force"
