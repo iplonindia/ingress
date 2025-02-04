@@ -25,7 +25,7 @@ steps:
 substitutions:
   _RELEASE_NAME: nginx-dev-ingress
   _CLUSTER_NAME: "iplon-dev"
-  _REGION: "ap-south1-a"
+  _REGION: "asia-south1-a"
 
 logsBucket: 'gs://iplon-storage-logs-data/codebuildlogs'
 
