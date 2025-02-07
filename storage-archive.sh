@@ -16,7 +16,6 @@ if [ -d "$tar_Date_DIR" ]; then
 fi
 
 
-
 del_folder=$(date +%Y-%m-%d -d "$DATE - 1 day")
 
 del_Date_DIR="/mnt/disks/nfs/apache/$listfolders/logs/$del_folder"

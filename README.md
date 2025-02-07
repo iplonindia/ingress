@@ -17,4 +17,4 @@ Also you need to modify the cloudbuild-[environment]-ingress.yaml when ever you 
 
 As usual you are aware you have to add the new values.yaml and skaffold.yaml for adding the new ingress.
 
-Just check the existing values.yaml and skaffold.yaml for more understanding.. it will be helpful.
+Just check the existing values.yaml and skaffold.yaml for more understanding.. it will be helpful...

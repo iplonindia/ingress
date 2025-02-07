@@ -67,7 +67,7 @@ controller:
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
   kind: Deployment    # can be 'Deployment' or 'DaemonSet'
-  replicaCount: 2
+  replicaCount: 1
 
   ## minReadySeconds setting of Deployment or DaemonSet
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#min-ready-seconds
@@ -411,7 +411,10 @@ controller:
       https: 443
       stat: 1024
       prometheus: 6060
-
+      # rabbitmq: 1883
+      http2: 8080
+      # grafana: 3000
+      
     ## The controller service ports for http, https and stat can be disabled by
     ## setting below to false - this could be useful when only deploying haproxy
     ## as a TCP loadbalancer
@@ -419,9 +422,11 @@ controller:
     enablePorts:
       http: true
       https: true
-      quic: true
+      quic: false
       stat: true
+      http2: true
       prometheus: true
+      # igrafana: true
 
     ## Target port mappings for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
@@ -430,7 +435,10 @@ controller:
       https: https
       quic: quic
       stat: stat
+      http2: http2
       prometheus: prometheus
+      # grafana: igrafana
+
 
     ## Additional tcp ports to expose
     ## This is especially useful for TCP services:
