@@ -1,0 +1,14 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+metadata:
+  name: tcp-public-ingress-dev
+deploy:
+  helm:
+    releases:
+      - name: tcp-public-ingress-dev
+        namespace: ingress
+        chartPath: ./ingress-nginx-dev
+        valuesFiles:
+          - ./ingress-nginx-dev/values-tcp-public-ingress-dev.yaml
+        version: 4.12.0
+        recreatePods: true

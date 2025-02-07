@@ -1,0 +1,14 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+metadata:
+  name: indopacific-ingress
+deploy:
+  helm:
+    releases:
+      - name: indopacific-ingress
+        namespace: ingress
+        chartPath: ./ingress-nginx-prod
+        valuesFiles:
+          - ./ingress-nginx-prod/values-indopacific-ingress.yaml
+        version: 4.12.0
+        recreatePods: true

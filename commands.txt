@@ -69,4 +69,14 @@ helm install public-ingress haproxytech/kubernetes-ingress -f .\haproxy-public-i
 ### Dev
 helm -n ingress upgrade public-ingress-dev haproxytech/kubernetes-ingress -f .\dev\haproxy-public-ingress-dev.yaml
 helm -n ingress upgrade --install nginx-dev-ingress  ingress-nginx/ingress-nginx -f .\dev\nginx-dev-ingress-controller.yaml
-helm -n ingress upgrade --install hono-non-http-ingress  ingress-nginx/ingress-nginx -f .\dev\hono-non-http-ingress.yaml
+helm -n ingress upgrade --install hono-non-http-ingress  ingress-nginx/ingress-nginx -f .old\\dev\hono-non-http-ingress.yaml
+
+line no 113: ingressClassResourceName: need to change
+line no 114: ingressClass: need to change and it can be matched with ingressClassResourceName: 
+
+Line no 499:  loadBalancerIP should be changed with the reserved ip
+
+on HaProxy
+Line no 165: ingressClassResource:
+Line no 175: ingressclass:
+Line No 383: Service type to LoadBalancer

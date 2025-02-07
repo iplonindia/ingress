@@ -1,0 +1,75 @@
+steps:
+  # Step 1: Deploy using Cloud Deploy and specify Skaffold file
+  - id: "Authentication With GKE"
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - "-c"
+      - |
+        gcloud container clusters get-credentials $_CLUSTER_NAME --region $_REGION
+
+
+  - id: Deployment of imqtt-ingress-prod
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-imqtt-ingress.yaml"
+      - "--force"
+
+  - id: Deployment of nginx indoatlantic-ingress-prod(For Apache purposes)
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-indoatlantic-ingress.yaml"
+      - "--force"
+
+  - id: Deployment of nginx indopacific-ingress-prod(For Apache purposes)
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-indopacific-ingress.yaml"
+      - "--force"
+
+  - id: Deployment of nginx pvutility-ingress-prod (For Apache purposes)
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-pvutility-ingress.yaml"
+      - "--force"
+
+  - id: Deployment of nginx data-ingress-prod (For Apache purposes)
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-data-ingress.yaml"
+      - "--force"
+
+  - id: Deployment of nginx pts-ingress-prod (For Apache purposes)
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-pts-ingress.yaml"
+      - "--force"
+
+  - id: Deployment of haproxy public-ingress-prod
+    name: gcr.io/k8s-skaffold/skaffold
+    entrypoint: skaffold
+    args:
+      - "deploy"
+      - "--filename=skaffold-public-ingress.yaml"
+      - "--force"
+
+substitutions:
+  _CLUSTER_NAME: "iplon-india"
+  _REGION: "asia-south1-a"
+
+logsBucket: 'gs://iplon-storage-logs-data/codebuildlogs'
+
+options:
+  logging: GCS_ONLY

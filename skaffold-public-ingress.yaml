@@ -1,0 +1,14 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+metadata:
+  name: public-ingress
+deploy:
+  helm:
+    releases:
+      - name: public-ingress
+        namespace: ingress
+        chartPath: ./kubernetes-ingress-ha-proxy-prod
+        valuesFiles:
+          - ./kubernetes-ingress-ha-proxy-prod/values-public-ingress.yaml
+        version: 4.12.0
+        recreatePods: true

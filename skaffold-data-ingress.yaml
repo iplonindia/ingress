@@ -7,8 +7,8 @@ deploy:
     releases:
       - name: data-ingress
         namespace: ingress
-        chartPath: ./ingress-nginx
+        chartPath: ./ingress-nginx-prod
         valuesFiles:
-          - ./ingress-nginx/values-data-ingress.yaml
+          - ./ingress-nginx-prod/values-data-ingress.yaml
         version: 4.12.0
         recreatePods: true

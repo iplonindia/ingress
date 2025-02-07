@@ -1,14 +1,14 @@
 apiVersion: skaffold/v4beta12
 kind: Config
 metadata:
-  name: ingress-nginx
+  name: nginx-dev-ingress
 deploy:
   helm:
     releases:
-      - name: ingress-nginx
+      - name: nginx-dev-ingress
         namespace: ingress
-        chartPath: ./ingress-nginx
+        chartPath: ./ingress-nginx-dev
         valuesFiles:
-          - ./ingress-nginx/values-nginx-dev-ingress.yaml
+          - ./ingress-nginx-dev/values-nginx-dev-ingress.yaml
         version: 4.12.0
         recreatePods: true

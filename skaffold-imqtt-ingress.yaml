@@ -1,0 +1,14 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+metadata:
+  name: imqtt-ingress
+deploy:
+  helm:
+    releases:
+      - name: imqtt-ingress
+        namespace: ingress
+        chartPath: ./ingress-nginx-prod
+        valuesFiles:
+          - ./ingress-nginx-prod/values-imqtt-ingress.yaml
+        version: 4.12.0
+        recreatePods: true
