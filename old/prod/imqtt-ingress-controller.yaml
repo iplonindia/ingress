@@ -19,3 +19,4 @@ controller:
     v: "4"
 tcp:
     1883: "irabbitmq/irabbitmq:1883"
+    1884: "technique/irabbitmq-technique:1883"

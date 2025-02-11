@@ -406,31 +406,57 @@ controller:
 
     ## Service ports to use for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
+    # ports:
+    #   http: 80
+    #   https: 443
+    #   stat: 1024
+    #   prometheus: 6060
+
     ports:
       http: 80
       https: 443
       stat: 1024
       prometheus: 6060
-
+      # rabbitmq: 1883
+      http2: 8080
+      # grafana: 3000
     ## The controller service ports for http, https and stat can be disabled by
     ## setting below to false - this could be useful when only deploying haproxy
     ## as a TCP loadbalancer
     ## Note: At least one port (http, https, stat or from tcpPorts) has to be enabled
+    # enablePorts:
+    #   http: true
+    #   https: true
+    #   quic: true
+    #   stat: true
+    #   prometheus: true
+
     enablePorts:
       http: true
       https: true
-      quic: true
+      quic: false
       stat: true
+      http2: true
       prometheus: true
+      # igrafana: true
 
     ## Target port mappings for http, https and stat
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/
+    # targetPorts:
+    #   http: http
+    #   https: https
+    #   quic: quic
+    #   stat: stat
+    #   prometheus: prometheus
+
     targetPorts:
       http: http
       https: https
       quic: quic
       stat: stat
+      http2: http2
       prometheus: prometheus
+      # grafana: igrafana
 
     ## Additional tcp ports to expose
     ## This is especially useful for TCP services:
