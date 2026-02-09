@@ -1,0 +1,26 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: igrafana-httproute
+spec:
+  parentRefs:
+  - name: tcp-gateway
+    sectionName: https
+    namespace: envoy-gateway-system
+  hostnames:
+  - "igrafana-dev01.iplon.co.in"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /
+    backendRefs:
+    - name: igrafana-dev-svc
+      port: 80
+

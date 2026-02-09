@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "iplon-india",
+  "private_key_id": "789f123864b2677694e7f135c39c7c8d16423d74",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDeClwPjCveU704\nfyWZsIUeZ+/4YHzbQHf00DR3bzmlYPDl28JlHQV0TmVUJdxQYpbVuQqnMmq4pz1F\n5wtpr1gy30G5subfubZAgdng1UHQFjpWZziCyCMTtMz1OX/8yoShTyNc22xdqBTS\nGUnt16Qrr3Gh7SCw/Aafji5QKO75+vd2+a7gyOh2ohUWeg2dvK7eh/pgg4QTiEnL\nIz1xPGwrUjIWGxH/eDeg9Y38J2vXH20oeXPT2lNCeug/KLgROZrr21x/R2kJU2su\n/9zuQ50XqxmLDHMO27wRHCbLp23TP2+0hGAh+X8a/eFIXF7hDHhVdeenEK+AeAmI\nTmYk0sf/AgMBAAECggEAQ+QKAwz6atfS3v/teMEi6smf86NY+dcL9pRkvnIJP7pU\n3gtkNHN7s/S2gdSzuPZ0JTQXgEjnnb8w+nsrH6zn/GIMICIF+rk3cyDhBCBgp6Xs\nP3f/LOnR49gf5QkoS5yGkiX265EB4N8gQp9N3gXV4i+aQIcXPFZLFiUsnwDtFQyn\n36XcsV5gavhHj5qKx0xna+LDAIRv4y6s+e5eh7tGUpNeWPVapT6k+vTwbLwZn5xd\nVBHgKMvBd8BW1LBBOLlf5hq1AcuASmLinyzVG+Biyzm5qkLBB/4YLCR8qgUbJ5Tj\nLlU6ip7ls/TV9qiSRW7HHep/vXNGsBVVO5ijSYe/PQKBgQD9/7gpCsBDolunGZBP\nZKWghUuu0UgmbV/fh8FBpH4At9YLs/NeLcqB2tW4WW2UNhzUC0fiHAlbxYaHm6O+\nfxrot1HF1H/Wr8e8yb+25AvBUsxjd6Lma556kYOqvniZZ+u6faZbhesy+FN1ReMN\nsmokbR4KxDvHuQtpSQkJzIdUKwKBgQDfyi86/qpBaBPiIxWsPL3SytUFK3nVF1jg\nZwWPdomx5yuTkHNZxTS/502Y+CrkyPCZLCAfGEp1HxISqEVSk8rRTqYnJoqOJEhf\nt6cNBeMsrJv2DIIbOiqVHegNYmrAJg7la2T95eYDLUta0GTThfDLLsXGKMU6ayQS\nBPp5B6mNfQKBgQDNCKr5fnM7ZYlEt08Vt7I3hMJWSRxL4MieoXBwc78/Byci5U1U\nPfSVpDgXiyD4nkHhLYYGUQmA6k8xkoK4mNP4/VpmLqZPgC/lBpraoPWYRiU1OfLm\nvAL/AA3gO8cQVqIkNZ+fi9gTmf+M0DB78wTZiLfSixuSmp5KjClenpqzZwKBgQCy\nHxhWqYpUAwYIcQp4C+S+2aiRs9gF7s5T1kwLszrHugrqKghWBGwG7pDJ14U0kmdG\nU2PBvDDPZgqZhQugPXgp/qKq+LdBicl9Pg0dhXka/swoHC6Wg0aPZ71iodn71I74\ntfEtUYYxMyUORF5sKejNoA3UunC5HbwZB5NhL+MZdQKBgQCBG7h0kFPnQQ3YElge\nHVDwpmOG2C0xswpTlt6HdniKs7vXy1UzmIN6TtybDp2oSDiEXVXEsODwC2G6ckxM\nSg+w+4NXqZAMHxy5eziYQ7wyVxCq8OObKbuIjUxR7isZszd3fCgAyDgKESwx6Sda\nK6TmIqrW81P13iEezEfZITDpkw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cert-manager-dns@iplon-india.iam.gserviceaccount.com",
+  "client_id": "109437399048290800338",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cert-manager-dns%40iplon-india.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

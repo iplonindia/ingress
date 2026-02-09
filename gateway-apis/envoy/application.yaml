@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: envoy-gateway
+  namespace: argocd
+spec:
+  project: default
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: envoy-gateway-system
+
+  sources:
+    # 1️⃣ Helm chart (OCI registry)
+    - repoURL: oci://docker.io/envoyproxy
+      chart: gateway-helm
+      targetRevision: v0.0.0-latest
+      helm:
+        releaseName: public
+        valueFiles:
+          - $values/gateway-apis/envoy/values.yaml
+
+    # 2️⃣ Values source reference
+    - repoURL: https://github.com/iplon/iplon-ingress.git
+      targetRevision: main
+      ref: values
+
+    # 3️⃣ Raw Kubernetes manifests (gc.yaml + gw.yaml)
+    - repoURL: https://github.com/iplon/iplon-ingress.git
+      targetRevision: main
+      path: gateway-apis/envoy
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

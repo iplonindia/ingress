@@ -1,0 +1,151 @@
+## Reference URL https://github.com/nginx/nginx-gateway-fabric/tree/main/charts/nginx-gateway-fabric
+## Important to change for the new deployment name,gatewayclassname,gatewaycontrollername,servertlssecretname,agenttlssecretname,loadBalancerIP
+clusterDomain: cluster.local
+nginxGateway:
+  kind: deployment
+  name: "public-tcp-gatewayclass"
+  namespace: gatewayapi
+  gatewayClassName: public-tcp-gatewayclass
+  podAnnotations: {}
+  labels: {}
+  gatewayClassAnnotations: {}
+  # gatewayControllerName: gateway.nginx.org/nginx-gateway-controller
+  gatewayControllerName: gateway.nginx.org/public-tcp-gateway-controller
+  config:
+    logging:
+      level: debug
+  configAnnotations: {}
+  service:
+    annotations: {}
+    labels: {}
+  serviceAccount:
+    annotations: {}
+    name: ""
+    imagePullSecret: ""
+    imagePullSecrets: []
+  replicas: 1
+  leaderElection:
+    enable: true
+    lockName: ""
+  readinessProbe:
+    enable: true
+    port: 8081
+    initialDelaySeconds: 3
+  image:
+    repository: ghcr.io/nginx/nginx-gateway-fabric
+    tag: edge
+    pullPolicy: Always
+  productTelemetry:
+    enable: true
+  lifecycle: {}
+  resources: {}
+  extraVolumes: []
+  extraVolumeMounts: []
+  terminationGracePeriodSeconds: 30
+  tolerations: []
+  nodeSelector: {}
+  affinity: {}
+  topologySpreadConstraints: []
+  # -- Autoscaling configuration for the NGINX Gateway Fabric control plane.
+  autoscaling:
+    # -- Enable or disable Horizontal Pod Autoscaler for the control plane.
+    enable: false
+  metrics:
+    # -- Enable exposing metrics in the Prometheus format.
+    enable: true
+    port: 9113
+    secure: false
+  gwAPIExperimentalFeatures:
+    # -- Enable the experimental features of Gateway API which are supported by NGINX Gateway Fabric. Requires the Gateway
+    # APIs installed from the experimental channel.
+    enable: false
+  gwAPIInferenceExtension:
+    # -- Enable Gateway API Inference Extension support. Allows for configuring InferencePools to route traffic to AI workloads.
+    enable: false
+  snippetsFilters:
+    # -- Enable SnippetsFilters feature. SnippetsFilters allow inserting NGINX configuration into the generated NGINX
+    # config for HTTPRoute and GRPCRoute resources.
+    enable: false
+# -- The nginx section contains the configuration for all NGINX data plane deployments
+# installed by the NGINX Gateway Fabric control plane.
+nginx:
+  kind: deployment
+  replicas: 1
+  patches: []
+  # -- Example:
+  # - type: StrategicMerge
+  #   value:
+  #     metadata:
+  #       labels:
+  #         team: "nginx-gateway-fabric"
+
+  # -- Autoscaling configuration for the NGINX data plane.
+  autoscaling:
+    # -- Enable or disable Horizontal Pod Autoscaler for the NGINX data plane.
+    enable: false
+  image:
+    # -- The NGINX image to use.
+    repository: ghcr.io/nginx/nginx-gateway-fabric/nginx
+    tag: edge
+    pullPolicy: Always
+  # -- Is NGINX Plus image being used.
+  plus: false
+  # -- Configuration for NGINX One Console.
+  nginxOneConsole:
+    dataplaneKeySecretName: ""
+    # -- The Endpoint host that the NGINX One Console telemetry metrics will be sent to.
+    endpointHost: "agent.connect.nginx.com"
+    endpointPort: 443
+    skipVerify: false
+  imagePullSecret: ""
+  imagePullSecrets: []
+  usage:
+    secretName: "nplus-license"
+    endpoint: ""
+    resolver: ""
+    skipVerify: false
+    caSecretName: ""
+    clientSSLSecretName: ""
+    enforceInitialReport: true
+  config: {}
+  pod: {}
+  container:
+    hostPorts: []
+    resources: {}
+    lifecycle: {}
+    volumeMounts: []
+    readinessProbe: {}
+  # -- The service configuration for the NGINX data plane. This is applied globally to all Gateways managed by this
+  # instance of NGINX Gateway Fabric.
+  service:
+    type: LoadBalancer
+    externalTrafficPolicy: Local
+    loadBalancerIP: ""  ## This is the IP we will configure it the cloudflare for the dns exmample: api.betora.bet
+    loadBalancerClass: ""
+    loadBalancerSourceRanges: []
+    nodePorts: []
+    # - port: 30025
+    #   listenerPort: 80
+    patches: []
+    # -- Example:
+    #   - type: JSONPatch
+    #     value:
+    #       - op: replace
+    #         path: /spec/sessionAffinity
+    #         value: "ClientIP"
+
+  # -- Enable debugging for NGINX. Uses the nginx-debug binary. The NGINX error log level should be set to debug in the NginxProxy resource.
+  debug: false
+# -- The certGenerator section contains the configuration for the cert-generator Job.
+certGenerator:
+  # -- The annotations of the cert-generator Job.
+  annotations: {}
+  serverTLSSecretName: public-tcp-gatewayclass-server-tls
+  agentTLSSecretName: public-tcp-gatewayclass-agent-tls
+  overwrite: false
+  ttlSecondsAfterFinished: 30
+  tolerations: []
+  nodeSelector: {}
+  affinity: {}
+  topologySpreadConstraints: []
+gateways: []

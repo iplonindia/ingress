@@ -1,0 +1,37 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: public-api-gateway
+  namespace: gatewayapi
+  annotations:
+     gateway.nginx.org/external-traffic-policy: "Local"
+     gateway.nginx.org/log-level: "debug"
+
+spec:
+  gatewayClassName: public-api-gatewayclass
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All # Allows HTTPRoutes from all namespaces to attach
+    - name: https
+      port: 443
+      protocol: HTTPS
+      # hostname: "*.iplon.co.in"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          # Reference your TLS secret(s) in this namespace
+          - name: wildcard-iplon-co-in-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: tcp-8080
+      port: 8080
+      protocol: TCP
+      allowedRoutes:
+        namespaces:
+          from: All

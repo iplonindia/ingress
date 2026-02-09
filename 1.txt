@@ -1,0 +1,27 @@
+az apim api import --resource-group greenheck-api-management-service --service-name marketing-qa --path marketing-qa --specification-format OpenApi --specification-url "https://greenheck-marketing-api-qa.azurewebsites.net/swagger/docs/v1" --api-id marketing-qa --overwrite true
+
+
+
+
+az apim api import
+  --resource-group greenheck-api-management-service --service-name greenheck-api-management-service   --path marketing/qa/v1.0  --api-id marketing-events-test   --specification-format OpenApi  --specification-path Marketing-Events-Test.openapi+json.json 
+  --display-name "Marketing - Events - Test" 
+  --overwrite true
+
+
+
+az apim api import --resource-group greenheck-api-management-service --service-name greenheck-api-management-service  --path marketing/qa/v1.0   --api-id marketing-events-test   --specification-format OpenApi   --specification-url https://greenheck-marketing-api-qa.azurewebsites.net/swagger/docs/v1   --display-name "Marketing - Events - Test"  --overwrite true
+
+
+az apim api import --resource-group greenheck-api-management-service --service-name greenheck-api-management-service --path /marketing/qa  --api-id marketing-qav1-0   --specification-format OpenApi --specification-path "C:\Users\Subbiah Kalimuthu\Desktop\Marketing - Events - Test.openapi+json.json"   --display-name "Marketing - Events - Test" --service-url "https://greenheck-marketing-api-qa.azurewebsites.net"
+
+
+az apim api show --api-id marketing-qav1-0 --resource-group greenheck-api-management-service --service greenheck-api-management-service
+
+
+az apim api import --resource-group greenheck-api-management-service --service-name greenheck-api-management-service --path /marketing/qa  --api-id marketing-qav1-0   --specification-format OpenApi --specification-url "https://greenheck-marketing-api-qa.azurewebsites.net/swagger/docs/v1"   --display-name "Marketing - Events - Test" --service-url "https://greenheck-marketing-api-qa.azurewebsites.net"
+
+
+az apim api import --resource-group greenheck-api-management-service --service-name greenheck-api-management-service --path /marketing/qa  --api-id marketing-qav1-0   --specification-format OpenApi --specification-path "c:\users\Subbiah Kalimuthu\Desktop\Marketing - Events - Test.swagger.json"   --display-name "Marketing - Events - Test" --service-url "https://greenheck-marketing-api-qa.azurewebsites.net"
+
+curl -o swagger.json https://greenheck-marketing-api-qa.azurewebsites.net/swagger/docs/v1 sed -i 's/Optional\[/Optional_/g; s/\]//g; s/\[\]//g; s/Nullable_/Nullable/g' swagger.json

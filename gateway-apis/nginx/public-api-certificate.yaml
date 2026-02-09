@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-iplon-co-in-cert
+  namespace: envoy-gateway-system
+spec:
+  secretName: wildcard-iplon-co-in-cert
+  commonName: "*.iplon.co.in"
+  dnsNames:
+    - "*.iplon.co.in"
+    - iplon.co.in
+  issuerRef:
+    name: cert-manager-public-api-gateway
+    kind: ClusterIssuer

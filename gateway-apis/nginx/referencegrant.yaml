@@ -1,0 +1,13 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-gatewayapi-access
+  namespace: technique
+spec:
+  from:
+  - group: gateway.networking.k8s.io
+    kind: TCPRoute
+    namespace: gatewayapi
+  to:
+  - group: ""
+    kind: Service
