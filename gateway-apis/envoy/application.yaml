@@ -21,12 +21,12 @@ spec:
           - $values/gateway-apis/envoy/values.yaml
 
     # 2️⃣ Values source reference
-    - repoURL: https://github.com/iplon/iplon-ingress.git
+    - repoURL: https://github.com/iplonindia/ingress.git
       targetRevision: main
       ref: values
 
     # 3️⃣ Raw Kubernetes manifests (gc.yaml + gw.yaml)
-    - repoURL: https://github.com/iplon/iplon-ingress.git
+    - repoURL: https://github.com/iplonindia/ingress.git
       targetRevision: main
       path: gateway-apis/envoy
 
